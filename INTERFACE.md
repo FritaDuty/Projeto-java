@@ -6,7 +6,7 @@ Este documento apresenta imagens ilustrativas da interface do sistema de gerenci
 
 ## 📋 Menu Principal
 
-![Menu Principal](imagens/menu-principal.png)
+![Menu Principal](imagens/tela_inicio.png)
 
 > Tela inicial do sistema com as opções principais de navegação.
 
