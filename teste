@@ -1,0 +1,13 @@
+public class teste {
+
+	public static void main(String[] args) {
+	
+		//Cadastro cadastro = new Cadastro();
+		//cadastro.VisualizarCadastro();
+		new TelaInicial();
+		//new TelaCadastroPaciente();
+		//new TelaCadastroMédico();
+		// new TelaLista();
+		//new Agendar();
+		 //new Consultas();
+		//new Editar();
