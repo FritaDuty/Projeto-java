@@ -27,5 +27,9 @@ O objetivo principal do projeto é aplicar conceitos fundamentais de programaç�
 - Localize a classe com o método main, geralmente chamada Main.java.
 - Clique com o botão direito do mouse e selecione Executar.
 
+## 📝 Licença
+
+Este projeto está licenciado sob a EPL-2.0 - consulte o arquivo LICENSE para mais detalhes.
+
 ```bash
 git clone https://github.com/FritaDuty/Projeto-java.git
