@@ -22,10 +22,15 @@ O objetivo principal do projeto é aplicar conceitos fundamentais de programaç�
 ## 🚀 Como Executar o Projeto
 
 ### 1. Clonar o repositório
-- Abra sua IDE Java preferida (Eclipse, IntelliJ IDEA, NetBeans etc.).
-- Escolha a opção "Importar Projeto" e selecione a pasta Projeto-java.
-- Localize a classe com o método main, geralmente chamada Main.java.
-- Clique com o botão direito do mouse e selecione Executar.
+
+### 2. Importar o projeto para sua IDE
+
+-Abra sua IDE Java preferida (Eclipse, IntelliJ IDEA, NetBeans etc.).
+-Escolha a opção "Importar Projeto" e selecione a pasta Projeto-java.
+
+### 3. Executar o projeto
+-Localize a classe com o método main, geralmente chamada Main.java.
+-Clique com o botão direito do mouse e selecione Executar.
 
 ## 📝 Licença
 
