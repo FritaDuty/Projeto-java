@@ -1,4 +1,4 @@
-# Projeto Java - Sistema de Gerenciamento de Usuários
+# Projeto Java - Sistema de Saude 
 
 Este projeto foi desenvolvido como parte da disciplina de Linguagem de Programação. O sistema simula um ambiente simples de gerenciamento de usuários, com funcionalidades básicas como cadastro, edição, exclusão e agendamento de ações relacionadas aos usuários.
 
@@ -22,6 +22,10 @@ O objetivo principal do projeto é aplicar conceitos fundamentais de programaç�
 ## 🚀 Como Executar o Projeto
 
 ### 1. Clonar o repositório
+- Abra sua IDE Java preferida (Eclipse, IntelliJ IDEA, NetBeans etc.).
+- Escolha a opção "Importar Projeto" e selecione a pasta Projeto-java.
+- Localize a classe com o método main, geralmente chamada Main.java.
+- Clique com o botão direito do mouse e selecione Executar.
 
 ```bash
 git clone https://github.com/FritaDuty/Projeto-java.git
