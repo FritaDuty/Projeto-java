@@ -1,6 +1,6 @@
 # Projeto Java - Sistema de Saude 
 
-Este projeto foi desenvolvido como parte da disciplina de Linguagem de Programação. O sistema simula um ambiente simples de gerenciamento de usuários, com funcionalidades básicas como cadastro, edição, exclusão e agendamento de ações relacionadas aos usuários.
+Este projeto foi desenvolvido como parte da disciplina de algoritmos e Linguagem de Programação. O sistema simula um ambiente simples de sistema de saúde, com funcionalidades básicas como cadastro, edição, exclusão e agendamento de ações relacionadas aos usuários.
 
 ## 📌 Objetivo
 
@@ -8,16 +8,16 @@ O objetivo principal do projeto é aplicar conceitos fundamentais de programaç�
 
 ## 🔧 Funcionalidades
 
-- Cadastro de novos usuários
+- Cadastro de novos pacientes 
 - Edição de dados cadastrados
 - Exclusão de usuários
-- Agendamento de atividades
+- Agendamento de consultas
 - Interface de menu para facilitar a navegação
 
 ## 🛠️ Tecnologias Utilizadas
 
 - Java (versão 8 ou superior)
-- IDE recomendada: Eclipse, IntelliJ IDEA ou NetBeans
+- IDE recomendada: Eclipse
 
 ## 🚀 Como Executar o Projeto
 
