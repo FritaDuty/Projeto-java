@@ -83,7 +83,7 @@ Este documento apresenta imagens ilustrativas da interface do sistema de gerenci
 
 ---
 
-```bash
-📌 Retorne ao [README.md](./README.md) para mais informações sobre o projeto
+```
+📌 Retorne ao README para mais informações sobre o projeto
 
 
