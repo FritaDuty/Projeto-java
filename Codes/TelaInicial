@@ -3,7 +3,7 @@ public class TelaInicial extends JFrame implements ActionListener {
 	List<Cadastros> listaPacientes = new ArrayList<>();
 	List<Historico> historicoMedico = new ArrayList<>();
 	JFrame inicio;
-	
+	 
 	JButton cadPa ;
 	JButton lisPa ;
 	JButton agendar ;
