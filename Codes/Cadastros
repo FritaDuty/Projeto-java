@@ -3,8 +3,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Cadastros {
-	protected static int contNum = 10000;
-	protected int numProntuario = 0;
+    protected static int contNum = 10000;
+    protected int numProntuario = 0;
     protected String nome_pessoa;
     protected String idade; 
     protected String cpf; 
