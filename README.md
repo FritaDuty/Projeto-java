@@ -34,7 +34,7 @@ O objetivo principal do projeto é aplicar conceitos fundamentais de programaç�
 
 ## 📝 Licença
 
-Este projeto está licenciado sob a EPL-2.0 - consulte o arquivo LICENSE para mais detalhes.
+Este projeto está licenciado sob a EPL-2.0 - consulte o arquivo [LICENSE](LICENSE) para mais detalhes.
 
 ```bash
 https://github.com/FritaDuty/Projeto-java.git
