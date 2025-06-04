@@ -78,7 +78,7 @@ Este documento apresenta imagens ilustrativas da interface do sistema de gerenci
 
 ## 💡 Observações
 
-- As imagens estão localizadas na pasta `imagens/` dentro do repositório.
+- As imagens estão localizadas na pasta [`imagens/`](imagens/) dentro do repositório.
 - As interfaces são exibidas no terminal atualmente. Futuras versões podem incorporar uma interface gráfica com Swing ou JavaFX.
 
 ---
