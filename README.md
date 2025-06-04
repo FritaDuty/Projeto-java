@@ -12,7 +12,7 @@ O objetivo principal do projeto é aplicar conceitos fundamentais de programaç�
 - Edição de dados cadastrados
 - Exclusão de usuários
 - Agendamento de consultas
-- [Interface](Interface.md) de menu para facilitar a navegação
+- [Interface de menu para facilitar a navegação](Interface.md)
 
 ## 🛠️ Tecnologias Utilizadas
 
