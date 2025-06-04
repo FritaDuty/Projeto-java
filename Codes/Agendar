@@ -122,7 +122,7 @@ public class Agendar extends JFrame implements ActionListener{
 					caixaExames.getText(), 
 					caixaDataExames.getText(), 
 					caixaHoraExames.getText())) 
-			{
+			{       // Maria você é linda demais
 				novohistorico = new Historico(cod,caixaConsultas.getText(),caixaDataConsultas.getText(),caixaHoraConsultas.getText(),
 											caixaExames.getText(),caixaDataExames.getText(), caixaHoraExames.getText());
 				historicoMedico.add(novohistorico);
