@@ -129,7 +129,6 @@ public class Agendar extends JFrame implements ActionListener{
 				mensagem.notMensagem("A consulta e o exame foram agendados.");
 				tela.dispose();
 			}
-
 		}
 		else if(e.getSource() == cancelar) {
 			tela.dispose();
