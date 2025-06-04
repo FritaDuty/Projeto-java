@@ -4,7 +4,7 @@ Este projeto foi desenvolvido como parte da disciplina de algoritmos e Linguagem
 
 ## 📌 Objetivo
 
-O objetivo principal do projeto é aplicar conceitos fundamentais de programação orientada a objetos (POO) em Java, organizando o código em pacotes e implementando funcionalidades típicas de sistemas de cadastro.
+O objetivo principal do projeto é aplicar conceitos fundamentais de programação orientada a objetos (POO) em Java, organizando o código em pacotes e implementando funcionalidades típicas de sistemas de saúde.
 
 ## 🔧 Funcionalidades
 
