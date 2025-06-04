@@ -1,3 +1,5 @@
+package Sistema_Saude;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -122,13 +124,14 @@ public class Agendar extends JFrame implements ActionListener{
 					caixaExames.getText(), 
 					caixaDataExames.getText(), 
 					caixaHoraExames.getText())) 
-			{       // Maria você é linda demais
+			{
 				novohistorico = new Historico(cod,caixaConsultas.getText(),caixaDataConsultas.getText(),caixaHoraConsultas.getText(),
 											caixaExames.getText(),caixaDataExames.getText(), caixaHoraExames.getText());
 				historicoMedico.add(novohistorico);
-				mensagem.notMensagem("A consulta e o exame foram agendados.");
+				mensagem.notMensagem("A consulta e exame agendados.");
 				tela.dispose();
 			}
+
 		}
 		else if(e.getSource() == cancelar) {
 			tela.dispose();
@@ -136,30 +139,18 @@ public class Agendar extends JFrame implements ActionListener{
 		
 	}
 	
-	
-	
-	public boolean verificaTextoAgendamento(String texto,String texto2,String texto3,String texto4,String texto5,String texto6) {
-		if(new Operacao().verificaTexto(texto,texto2,texto3,texto4,texto5,texto6)) {
+	public boolean verificaTextoAgendamento(String consulta,String dataConsulta,String horaConsulta,String exame,String dataExame,String horaExame) {
+		if(new Operacao().verificaTexto(consulta,dataConsulta,horaConsulta,exame,dataExame,horaExame)) {
 			
-			if(Integer.parseInt(texto2) > 30 || Integer.parseInt(texto2) < 1) {
-				new Notificar().notMensagem("O dia "+texto2+" não existe no calendário, tente novamente");
+			if(!new Operacao().verificaData(dataConsulta, dataExame)) {
 				return false;
 			}
-			else if (texto3.length() > 5) {
-				new Notificar().notMensagem("Digite um horário válido");
+			else if (!new Operacao().verificaHora(horaConsulta,horaExame)) {
+				new Notificar().notMensagem("Digite um horário válido ao modelo exemplo: \"XX:XX\"");
 				return false;
 			}
-			else if (Integer.parseInt(texto5) > 30 || Integer.parseInt(texto5) < 1) {
-				new Notificar().notMensagem("O dia "+texto5+" não existe no calendário, tente novamente.");
-				return false;
-			}
-			else if (texto6.length() > 5) {
-				new Notificar().notMensagem("Digite um horário válido");
-				return false;
-			}
-			
 		}
-		else {new Notificar().notMensagem("Preencha-os devidamente e tente novamente."); return false;}
+		else {new Notificar().notMensagem("Preencha os espaços em branco e tente novamente."); return false;}
 		return true;
 	}
 }

@@ -1,10 +1,12 @@
+package Sistema_Saude;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Cadastros {
-    protected static int contNum = 10000;
-    protected int numProntuario = 0;
+	protected static int contNum = 10000;
+	protected int numProntuario = 0;
     protected String nome_pessoa;
     protected String idade; 
     protected String cpf; 
@@ -25,7 +27,7 @@ public class Cadastros {
     }
    
     public Cadastros() {}
-    
+   
     public void setNome_pessoa1(String nome_pessoa1) {
         this.nome_pessoa1 = nome_pessoa1;
     }
@@ -102,11 +104,13 @@ public class Cadastros {
         return contNum++;
     }
     
-    public boolean possui(String string) {
+    public boolean possuiNumero(String num) {
     	String numero = String.valueOf(numProntuario);
-    	if(numero.equals(string)) {
+    	if(numero.equals(num)) {
     		return true;
     	}
     	return false;
     }
+    
+    
 }

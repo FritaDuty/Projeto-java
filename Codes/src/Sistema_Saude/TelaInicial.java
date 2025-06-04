@@ -1,9 +1,22 @@
+package Sistema_Saude;
+
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.*;
+
 public class TelaInicial extends JFrame implements ActionListener {
 
 	List<Cadastros> listaPacientes = new ArrayList<>();
 	List<Historico> historicoMedico = new ArrayList<>();
 	JFrame inicio;
-	 
+	
 	JButton cadPa ;
 	JButton lisPa ;
 	JButton agendar ;
@@ -88,10 +101,15 @@ public class TelaInicial extends JFrame implements ActionListener {
 			telaLista.cadastros();
 		}
 		else if(e.getSource() == agendar) { // agendamento de consultas
-			String cod = mensagem.solicitaInput();
-			if(mensagem.verificaInput(cod)) {
-				Agendar agendar = new Agendar(listaPacientes,historicoMedico,cod);
-				agendar.exibir();
+			if(listaPacientes.size() < 1) {
+				mensagem.notMensagem("Não há cadastros no sistema");
+			}
+			else {
+				String cod = mensagem.solicitaInput();
+				if(mensagem.verificaInput(cod)) {
+					Agendar agendar = new Agendar(listaPacientes,historicoMedico,cod);
+					agendar.exibir();
+				}
 			}
 		}
 		else if(e.getSource() == consultas) { // historico de consultas
@@ -99,18 +117,28 @@ public class TelaInicial extends JFrame implements ActionListener {
 				telaLista.historio();
 		}
 		else if(e.getSource() == editar) { // editar cadastro
+			if(listaPacientes.size() < 1) {
+				mensagem.notMensagem("Não há cadastros no sistema");
+			}
+			else {
 			String cod = mensagem.solicitaInput();
-			if(mensagem.verificaInput(cod)) {
-				Cadastros cadastro = new Operacao(listaPacientes).acharCadastro(cod);
-				if(cadastro != null) {new Editar(cod,cadastro,listaPacientes).exibir();}
-				else {mensagem.notMensagem("Cadastro não encontrado para o código informado.");}
+				if(mensagem.verificaInput(cod)) {
+					Cadastros cadastro = new Operacao(listaPacientes).acharCadastro(cod);
+					if(cadastro != null) {new Editar(cod,cadastro,listaPacientes).exibir();}
+					else {mensagem.notMensagem("Cadastro não encontrado para o código informado.");}
+				}
 			}
 		}
 		else if(e.getSource() == excluir) { // excluir cadastro
-			String cod = mensagem.solicitaInput();
-			if(mensagem.verificaInput(cod)) {
-				new Operacao(listaPacientes).excluirCod(cod);
-				mensagem.notMensagem("O cadastro foi excluido com sucesso");
+			if(listaPacientes.size() < 1) {
+				mensagem.notMensagem("Não há cadastros no sistema");
+			}
+			else {
+				String cod = mensagem.solicitaInput();
+				if(mensagem.verificaInput(cod)) {
+					new Operacao(listaPacientes).excluirCod(cod);
+					mensagem.notMensagem("O cadastro foi excluido do sistema.");
+				}
 			}
 		}
 		else if(e.getSource() == sair) {

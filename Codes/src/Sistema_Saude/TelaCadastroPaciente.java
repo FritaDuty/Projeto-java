@@ -1,3 +1,5 @@
+package Sistema_Saude;
+
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -9,7 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
- 
+
 import javax.swing.*;
 import javax.swing.border.Border;
 
@@ -34,7 +36,7 @@ public class TelaCadastroPaciente extends JFrame implements ActionListener{
 	}
 	
 	public void exibirTela() {
-		ImageIcon icone = new ImageIcon("arena_sus.jpeg");
+		ImageIcon icone = new ImageIcon("arena_sus.jpeg*");
 		Image iconeEscala2 = icone.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
 		ImageIcon iconeJanela = new ImageIcon(iconeEscala2);
 		
@@ -63,7 +65,7 @@ public class TelaCadastroPaciente extends JFrame implements ActionListener{
 		JLabel cpf = new JLabel("Cpf:");
 		JLabel natal = new JLabel("Data de nascimento (dd/mm/aa):");
 		JLabel end = new JLabel("Endereço:");
-		JLabel tel = new JLabel("Telefone:");
+		JLabel tel = new JLabel("Telefone/Celular (DDD incluso):");
 		
 		 textoNome = new JTextField();
 		 textoIdade = new JTextField();
@@ -133,22 +135,21 @@ public class TelaCadastroPaciente extends JFrame implements ActionListener{
 		}
 	}
 	
-	public boolean verificaTextoCadastro(String texto,String texto2,String texto3,String texto4,String texto5,String texto6) {
-		if(new Operacao().verificaTexto(texto,texto2,texto3,texto4,texto5,texto6)) {
-			if(Integer.parseInt(texto2) > 120) {
-				new Notificar().notMensagem("Mais de 120 anos? Até parece. Corrija essa informação e tente novamente.");
+	public boolean verificaTextoCadastro(String nome,String idade,String cpf,String natal,String endereço,String telefone) {
+		if(new Operacao().verificaTexto(nome,idade,cpf,natal,endereço,telefone)) {
+			if(!new Operacao().verificaNome(nome)) {
 				return false;
 			}
-			else if (texto3.length() != 11) {
-				new Notificar().notMensagem("O cpf deve conter 11 dígitos. Tente novamente.");
+			else if(!new Operacao().verificaIdade(idade)) {
 				return false;
 			}
-			else if (texto6.length() < 10) {
-				new Notificar().notMensagem("O telefone deve conter ao menos 10 dígitos");
+			else if (!new Operacao().verificaCpf(cpf, listaPacientes)) {
 				return false;
 			}
-			else if (texto6.length() > 11) {
-				new Notificar().notMensagem("O telefone deve conter no máximo 11 dígitos");
+			else if(!new Operacao().verificaNatal(natal)) {
+				return false;
+			}
+			else if (!new Operacao().verificaTelefone(telefone, listaPacientes)) {
 				return false;
 			}
 		}

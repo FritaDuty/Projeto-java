@@ -1,3 +1,5 @@
+package Sistema_Saude;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -7,7 +9,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.*; 
+import javax.swing.*;
 import javax.swing.border.Border;
 
 public class Editar extends JFrame implements ActionListener{
@@ -113,23 +115,23 @@ public class Editar extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		Notificar mensagem = new Notificar();
 		if(e.getSource() == editar) {
-			
-			cadastro.setNome_pessoa1(textoNome.getText());
-		    cadastro.setIdade1(textoIdade.getText());
-		    cadastro.setCpf1(textoCpf.getText());
-		    cadastro.setNatal1(textoNatal.getText());
-		    cadastro.setEndereço1(textoEndereço.getText());
-		    cadastro.setTelefone1(textoTel.getText());
-		    cadastro.transferir();
+			if(verificaTextoCadastro(textoNome.getText(),textoIdade.getText(),textoCpf.getText()
+					,textoNatal.getText(),textoEndereço.getText(),textoTel.getText())) 
+				{
+					cadastro.setNome_pessoa1(textoNome.getText());
+					cadastro.setIdade1(textoIdade.getText());
+					cadastro.setCpf1(textoCpf.getText());
+					cadastro.setNatal1(textoNatal.getText());
+					cadastro.setEndereço1(textoEndereço.getText());
+					cadastro.setTelefone1(textoTel.getText());
+					cadastro.transferir();
 		    
-		    listaPacientes.set(listaPacientes.indexOf(cadastro),cadastro);
-		    //cadastro.setListaPacientes(cadastro);
+					listaPacientes.set(listaPacientes.indexOf(cadastro),cadastro);
+					//cadastro.setListaPacientes(cadastro);
 		   
-			if(verificaTextoEdicao(textoNome.getText(),textoIdade.getText(),textoCpf.getText()
-				,textoNatal.getText(),textoEndereço.getText(),textoTel.getText())) 
-			{
-				mensagem.notMensagem("O cadastro foi editado com sucesso");
-				janela.dispose();
+			
+					mensagem.notMensagem("O cadastro foi editado com sucesso");
+					janela.dispose();
 			}
 		}
 		else if(e.getSource() == cancelar) {
@@ -137,26 +139,25 @@ public class Editar extends JFrame implements ActionListener{
 		}
 	}
 	
-	public boolean verificaTextoEdicao(String texto,String texto2,String texto3,String texto4,String texto5,String texto6) {
-		if(new Operacao().verificaTexto(texto,texto2,texto3,texto4,texto5,texto6)) {
-			if(Integer.parseInt(texto2) > 120) {
-				new Notificar().notMensagem("Mais de 120 anos? Até parece. Corrija essa informação e tente novamente.");
+	public boolean verificaTextoCadastro(String nome,String idade,String cpf,String natal,String endereço,String telefone) {
+		if(new Operacao().verificaTexto(nome,idade,cpf,natal,endereço,telefone)) {
+			if(!new Operacao().verificaNome(nome)) {
 				return false;
 			}
-			else if (texto3.length() != 11) {
-				new Notificar().notMensagem("O cpf deve conter 11 dígitos. Tente novamente.");
+			else if(!new Operacao().verificaIdade(idade)) {
 				return false;
 			}
-			else if (texto6.length() < 10) {
-				new Notificar().notMensagem("O telefone deve conter ao menos 10 dígitos");
+			else if (!new Operacao().verificaCpfEditado(cpf, listaPacientes, cadastro.getCpf())) {
 				return false;
 			}
-			else if (texto6.length() > 11) {
-				new Notificar().notMensagem("O telefone deve conter no máximo 11 dígitos");
+			else if(!new Operacao().verificaNatal(natal)) {
+				return false;
+			}
+			else if (!new Operacao().verificaTelefoneEditado(telefone, listaPacientes, cadastro.getTelefone())) {
 				return false;
 			}
 		}
-		else {new Notificar().notMensagem("Os tópicos não podem estar vazios. Preencha-os devidamente."); return false;}
+		else {new Notificar().notMensagem("Preencha-os devidamente e tente novamente."); return false;}
 		return true;
 	}
 
