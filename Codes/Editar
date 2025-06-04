@@ -1,0 +1,163 @@
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.*;
+import javax.swing.border.Border;
+
+public class Editar extends JFrame implements ActionListener{
+
+	JFrame janela;
+	JButton editar;
+	JButton cancelar;
+	
+	
+	JTextField textoNome;
+	JTextField textoIdade;
+	JTextField textoCpf;
+	JTextField textoNatal; 
+	JTextField textoEndereço; 
+	JTextField textoTel;
+	
+	private List<Cadastros> listaPacientes = new ArrayList<>();
+	private Cadastros cadastro;
+	private String cod;
+	
+	Editar(String cod, Cadastros cadastro, List<Cadastros> listaPacientes){
+		this.cod = cod;
+		this.cadastro = cadastro;
+		this.listaPacientes = listaPacientes;
+		}
+	
+	public void exibir() {
+		ImageIcon icone = new ImageIcon("arena_sus.jpeg");
+		Image iconeEscala2 = icone.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
+		ImageIcon iconeJanela = new ImageIcon(iconeEscala2);
+		
+		
+		janela = new JFrame("Editar Cadastro");
+		janela.setSize(500,525);
+		janela.setResizable(false);
+		janela.setLocationRelativeTo(null);
+		janela.setLayout(null);
+		janela.setIconImage(iconeJanela.getImage());
+		
+		
+		JPanel painelTex = new JPanel();
+		painelTex.setLayout(new GridLayout(7,2,10,20));
+		painelTex.setBounds(50,75,400,350);
+		
+		Border borda = BorderFactory.createLineBorder(Color.black,2);
+		JLabel titulo = new JLabel("Editar Cadastro");
+		titulo.setVerticalAlignment(JLabel.NORTH); 
+		titulo.setHorizontalAlignment(JLabel.CENTER);
+		titulo.setForeground(Color.black);
+		titulo.setBackground(Color.lightGray);
+		titulo.setBorder(borda);
+		titulo.setOpaque(true);
+		titulo.setBounds(50,20,400,25);
+		titulo.setFont(new Font("Calibri",Font.BOLD,19));
+		JLabel nome = new JLabel("Nome:");
+		JLabel idade = new JLabel("Idade:");
+		JLabel cpf = new JLabel("Cpf:");
+		JLabel natal = new JLabel("Data de nascimento (dd/mm/aa):");
+		JLabel end = new JLabel("Endereço:");
+		JLabel tel = new JLabel("Telefone:");
+		
+		 textoNome = new JTextField(cadastro.getNome_pessoa());
+		 textoIdade = new JTextField(cadastro.getIdade());
+		 textoCpf = new JTextField(cadastro.getCpf());
+		 textoNatal = new JTextField(cadastro.getNatal());
+		 textoEndereço = new JTextField(cadastro.getEndereço());
+		 textoTel = new JTextField(cadastro.getTelefone());
+		
+		editar = new JButton("Salvar");
+		editar.setForeground(Color.white);
+		editar.setBackground(Color.blue);
+		editar.addActionListener(this);
+		
+		cancelar = new JButton("Cancelar");
+		cancelar.addActionListener(this);
+		
+		
+		painelTex.add(nome);
+		painelTex.add(textoNome);
+		painelTex.add(idade);
+		painelTex.add(textoIdade);
+		painelTex.add(cpf);
+		painelTex.add(textoCpf);
+		painelTex.add(natal);
+		painelTex.add(textoNatal);;
+		painelTex.add(end);
+		painelTex.add(textoEndereço);
+		painelTex.add(tel);
+		painelTex.add(textoTel);
+		painelTex.add(editar);
+		painelTex.add(cancelar);
+		
+		
+		janela.add(painelTex);
+		janela.add(titulo);
+		
+		
+		janela.setVisible(true);
+		
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		Notificar mensagem = new Notificar();
+		if(e.getSource() == editar) {
+			
+			cadastro.setNome_pessoa1(textoNome.getText());
+		    cadastro.setIdade1(textoIdade.getText());
+		    cadastro.setCpf1(textoCpf.getText());
+		    cadastro.setNatal1(textoNatal.getText());
+		    cadastro.setEndereço1(textoEndereço.getText());
+		    cadastro.setTelefone1(textoTel.getText());
+		    cadastro.transferir();
+		    
+		    listaPacientes.set(listaPacientes.indexOf(cadastro),cadastro);
+		    //cadastro.setListaPacientes(cadastro);
+		   
+			if(verificaTextoEdicao(textoNome.getText(),textoIdade.getText(),textoCpf.getText()
+				,textoNatal.getText(),textoEndereço.getText(),textoTel.getText())) 
+			{
+				mensagem.notMensagem("O cadastro foi editado com sucesso");
+				janela.dispose();
+			}
+		}
+		else if(e.getSource() == cancelar) {
+			janela.dispose();
+		}
+	}
+	
+	public boolean verificaTextoEdicao(String texto,String texto2,String texto3,String texto4,String texto5,String texto6) {
+		if(new Operacao().verificaTexto(texto,texto2,texto3,texto4,texto5,texto6)) {
+			if(Integer.parseInt(texto2) > 120) {
+				new Notificar().notMensagem("Mais de 120 anos? Até parece. Corrija essa informação e tente novamente.");
+				return false;
+			}
+			else if (texto3.length() != 11) {
+				new Notificar().notMensagem("O cpf deve conter 11 dígitos. Tente novamente.");
+				return false;
+			}
+			else if (texto6.length() < 10) {
+				new Notificar().notMensagem("O telefone deve conter ao menos 10 dígitos");
+				return false;
+			}
+			else if (texto6.length() > 11) {
+				new Notificar().notMensagem("O telefone deve conter no máximo 11 dígitos");
+				return false;
+			}
+		}
+		else {new Notificar().notMensagem("Os tópicos não podem estar vazios. Preencha-os devidamente."); return false;}
+		return true;
+	}
+
+}
