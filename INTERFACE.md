@@ -83,6 +83,7 @@ Este documento apresenta imagens ilustrativas da interface do sistema de gerenci
 
 ---
 
-### 📌 Retorne ao README para mais informações sobre o projeto
+### 📌 [Retorne ao README para mais informações sobre o projeto](../README.md)
+
 
 
